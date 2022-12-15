@@ -4,18 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieResponse {
+public class MovieDetailResponse {
     private String movie_id;
-    private String original_title;
-    private String genres;
+    private String primaryTitle;
     private Date release_date;
     private float averageRating;
-    private int numVotes;
-
+    private int runtimeMinutes;
+    private int budget;
+    private int revenue;
+    private String overview;
 }

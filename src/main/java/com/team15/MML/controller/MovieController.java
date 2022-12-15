@@ -1,13 +1,11 @@
 package com.team15.MML.controller;
 
+import com.team15.MML.dto.MovieDetailResponse;
 import com.team15.MML.dto.MovieResponse;
 import com.team15.MML.model.Movies;
 import com.team15.MML.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
@@ -18,7 +16,6 @@ public class MovieController {
     private final MovieService movieService;
 
     public MovieController(MovieService movieService) {
-
         this.movieService = movieService;
     }
 
@@ -26,6 +23,11 @@ public class MovieController {
     public List<MovieResponse> get250Movies(){
         return movieService.get250Movies();
 
+    }
+
+    @GetMapping("/movieDetail")
+    public List <MovieDetailResponse> getMovieDetail(@RequestParam("query") String query){
+        return movieService.getMovieDetail(query);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.team15.MML.repository;
 
+import com.team15.MML.dto.MovieDetailResponse;
 import com.team15.MML.dto.MovieResponse;
 import com.team15.MML.entity.MoviesEntity;
 import com.team15.MML.model.Movies;
@@ -14,4 +15,9 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<MoviesEntity, String> {
     @Query(name = "get250movies", nativeQuery = true)
     List<MovieResponse> get250Movies();
+    @Query(
+            name = "getMovieDetail"
+            ,nativeQuery = true
+    )
+    List<MovieDetailResponse> getMovieDetail(String query);
 }
