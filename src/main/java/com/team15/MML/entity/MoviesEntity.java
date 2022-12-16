@@ -23,6 +23,7 @@ import java.util.List;
                 "averageRating desc)t2 left join movies on t2.movie_id=movies.movie_id where original_title is not null order by averageRating desc limit 250;",
         resultSetMapping = "get250MoviesDto"
 )
+
 //Query for displaying the details about a particular movie
 @NamedNativeQuery(
         name = "getMovieDetail",
@@ -54,7 +55,7 @@ import java.util.List;
                 " order by averageRating desc limit 5;",
         resultSetMapping = "getTopFiveBudgetDto"
 )
-//Query for displaying gross profit of top 5 movies
+//Query for displaying gross profit of top-rated 5 movies
 @NamedNativeQuery(
         name = "getTopFiveGP",
         query = "select * from (select original_title, averageRating, numVotes, (revenue-budget)GROSS_PROFIT from movies, " +
@@ -69,6 +70,14 @@ import java.util.List;
                 " (select movie_id,original_title,release_date,(revenue-budget)as profit from movies)t2 where t1.profit= t2.profit" +
                 " order by release_date desc;",
         resultSetMapping = "getEachYearDecadeDto"
+)
+
+@NamedNativeQuery(
+        name = "searchMovie",
+        query = "select movies.movie_id, movies.original_title, t2.genres, movies.release_date, t2.averageRating, t2.numVotes from (select t1.movie_id, t1.genres, t1.averageRating, t1.numVotes from " +
+                "(select * from genre, ratings where genre.movie_id=ratings.tconst and numVotes > 50000 order by numVotes desc )t1 order by averageRating desc)" +
+                "t2 left join movies on t2.movie_id=movies.movie_id where original_title is not null and original_title like CONCAT('%',:query, '%')order by averageRating desc;",
+        resultSetMapping = "get250MoviesDto"
 )
 
 @SqlResultSetMapping(name = "get250MoviesDto",

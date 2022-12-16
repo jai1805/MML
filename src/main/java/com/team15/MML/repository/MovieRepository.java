@@ -22,6 +22,7 @@ public interface MovieRepository extends JpaRepository<MoviesEntity, String> {
     )
     List<MovieDetailResponse> getMovieDetail(String query);
 
+
     @Query(name = "getTopFiveAllTime", nativeQuery = true)
     List<TopFiveResponse> getTopFiveAllTime();
 
@@ -38,4 +39,9 @@ public interface MovieRepository extends JpaRepository<MoviesEntity, String> {
 
     @Query(name = "getEachYearDecade", nativeQuery = true)
     List<OneDecadeResponse> getEachYearDecade();
+    @Query(
+            name = "searchMovie"
+            ,nativeQuery = true
+    )
+    List<MovieResponse> getSearchMovie(String query);
 }

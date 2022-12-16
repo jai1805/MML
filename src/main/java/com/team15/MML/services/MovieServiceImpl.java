@@ -45,4 +45,10 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public List<OneDecadeResponse> getEachYearDecade() {return movieRepository.getEachYearDecade();}
+
+    @Override
+    public List<MovieResponse> getSearchMovie(String query){
+        return movieRepository.getSearchMovie(query);
+    }
+
 }

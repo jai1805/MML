@@ -24,5 +24,6 @@ public interface MovieService {
 
     List<OneDecadeResponse> getEachYearDecade();
 
+    List<MovieResponse> getSearchMovie(String query);
 
 }

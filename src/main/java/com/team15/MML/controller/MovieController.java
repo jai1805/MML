@@ -54,4 +54,9 @@ public class MovieController {
     public List<OneDecadeResponse> getEachYearDecade(){
         return movieService.getEachYearDecade();
     }
+    @GetMapping("/movieSearch")
+    public List <MovieResponse> getSearchMovie(@RequestParam("query") String query){
+        return movieService.getSearchMovie(query);
+    }
+
 }
