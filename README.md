@@ -26,3 +26,17 @@ Database:
     e.Load the database: USE new_db_name
     f.Display the contents of the database: SHOW TABLES;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
